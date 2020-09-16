@@ -1,4 +1,4 @@
-select sum(total) as Total, department, (SELECT TOP 1 Name FROM [Enterprise].dbo.Departments WHERE department = DepartmentID) as DeptName  
+select sum(total) as Total, department, case when department = 35 then 'Home & Gift' when department = 92 then 'Postage Stamps' else (SELECT TOP 1 Name FROM [Enterprise].dbo.Departments WHERE department = DepartmentID) end  as DeptName  
 from(
 
 (select sum(total) as total, department
